@@ -414,6 +414,7 @@
                     <connections>
                         <outlet property="emailText" destination="nfv-no-kwb" id="aLN-o5-ihf"/>
                         <outlet property="passwordText" destination="tkk-Si-vbr" id="oZ9-Ja-WR9"/>
+                        <outlet property="userImage" destination="dB9-0J-JbZ" id="mTo-Xw-rBs"/>
                         <outlet property="usernameText" destination="FH6-BI-y8h" id="zD1-Fa-UuP"/>
                         <segue destination="nKn-J3-VaR" kind="unwind" identifier="unwindToChannel" unwindAction="prepareForUnwindWithSegue:" id="ioD-jU-y8z"/>
                     </connections>
