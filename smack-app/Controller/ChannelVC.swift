@@ -11,10 +11,10 @@ import UIKit
 class ChannelVC: UIViewController {
     
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var userImage: CircleImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.revealViewController().rearViewRevealWidth = self.view.frame.width - 60
         NotificationCenter.default.addObserver(self, selector: #selector(userDataDidChange), name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
     }
