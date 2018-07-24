@@ -28,6 +28,8 @@
 		768D5BBC2101F02200B89BBF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 768D5BBA2101F02200B89BBF /* LaunchScreen.storyboard */; };
 		768D5BC72101F02200B89BBF /* smack_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768D5BC62101F02200B89BBF /* smack_appTests.swift */; };
 		768D5BD22101F02200B89BBF /* smack_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768D5BD12101F02200B89BBF /* smack_appUITests.swift */; };
+		76D36F022106F8E000E15F67 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D36F012106F8E000E15F67 /* ProfileVC.swift */; };
+		76D36F042106F90300E15F67 /* ProfileVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76D36F032106F90300E15F67 /* ProfileVC.xib */; };
 		8C8A7A172F2D1DC270E67ED6 /* Pods_smack_appTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CA5C821C4A5F53E4578C51E /* Pods_smack_appTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -81,6 +83,8 @@
 		768D5BCD2101F02200B89BBF /* smack-appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "smack-appUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		768D5BD12101F02200B89BBF /* smack_appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = smack_appUITests.swift; sourceTree = "<group>"; };
 		768D5BD32101F02200B89BBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		76D36F012106F8E000E15F67 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		76D36F032106F90300E15F67 /* ProfileVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileVC.xib; sourceTree = "<group>"; };
 		E33DFCBB50CF39CADC152D8D /* Pods-smack-appTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-smack-appTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-smack-appTests/Pods-smack-appTests.release.xcconfig"; sourceTree = "<group>"; };
 		E5E8E84D488C6F5D83B264BF /* Pods-smack-appUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-smack-appUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-smack-appUITests/Pods-smack-appUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E8F42BD25BC7D2CFF7B727CE /* Pods_smack_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_smack_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -160,6 +164,7 @@
 				760366BD21057C6A00017819 /* LoginVC.swift */,
 				760366BF21057F2C00017819 /* CreateAccountVC.swift */,
 				760366C82105DDD900017819 /* AvatarPickerVC.swift */,
+				76D36F012106F8E000E15F67 /* ProfileVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -207,6 +212,7 @@
 		768D5BB02101F02100B89BBF /* smack-app */ = {
 			isa = PBXGroup;
 			children = (
+				76D36F052106F92800E15F67 /* XIBs */,
 				760366C12105BDEF00017819 /* Services */,
 				760366BA2105749F00017819 /* Utilities */,
 				767D1F382101FA930038D421 /* Model */,
@@ -238,6 +244,14 @@
 				768D5BD32101F02200B89BBF /* Info.plist */,
 			);
 			path = "smack-appUITests";
+			sourceTree = "<group>";
+		};
+		76D36F052106F92800E15F67 /* XIBs */ = {
+			isa = PBXGroup;
+			children = (
+				76D36F032106F90300E15F67 /* ProfileVC.xib */,
+			);
+			path = XIBs;
 			sourceTree = "<group>";
 		};
 		78BC79FCCB65DE0E4D990E5A /* Pods */ = {
@@ -362,6 +376,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76D36F042106F90300E15F67 /* ProfileVC.xib in Resources */,
 				768D5BBC2101F02200B89BBF /* LaunchScreen.storyboard in Resources */,
 				768D5BB92101F02200B89BBF /* Assets.xcassets in Resources */,
 				768D5BB72101F02100B89BBF /* Main.storyboard in Resources */,
@@ -470,6 +485,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76D36F022106F8E000E15F67 /* ProfileVC.swift in Sources */,
 				767D1F3C2101FAD00038D421 /* ChannelVC.swift in Sources */,
 				760366C92105DDD900017819 /* AvatarPickerVC.swift in Sources */,
 				760366C52105C97000017819 /* RoundedButton.swift in Sources */,
