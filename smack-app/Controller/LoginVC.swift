@@ -9,7 +9,11 @@
 import UIKit
 
 class LoginVC: UIViewController {
-
+    
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    @IBOutlet weak var usernameText: UITextField!
+    @IBOutlet weak var passwordText: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -23,6 +27,27 @@ class LoginVC: UIViewController {
         performSegue(withIdentifier: TO_CREATE_ACCOUNT, sender: nil)
     }
     
+    @IBAction func loginButtonPressed(_ sender: Any) {
+        spinner.isHidden = false
+        spinner.startAnimating()
+        
+        guard let email = usernameText.text, usernameText.text != "" else {   return  }
+        guard let password = passwordText.text, passwordText.text != "" else {   return  }
+        
+        AuthService.instance.loginUser(email: email, password: password) { (success) in
+            if success {
+                AuthService.instance.findUserByEmail(completion: { (success) in
+                    if success {
+                        NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
+                        self.spinner.isHidden = true
+                        self.spinner.stopAnimating()
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                })
+            }
+        }
+    }
+ 
     func setupView() {
         spinner.isHidden = true
         usernameText.attributedPlaceholder = NSAttributedString(string: "username", attributes: [NSAttributedStringKey.foregroundColor: smackPurplePlaceholder])
