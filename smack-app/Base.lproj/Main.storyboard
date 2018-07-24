@@ -154,6 +154,9 @@
                                         <real key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="loginButtonPressed:" destination="qzt-Qn-GYF" eventType="touchUpInside" id="5tJ-Hh-Sel"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="ySL-rW-2Sk">
                                 <rect key="frame" x="126.5" y="80" width="122.5" height="40"/>
@@ -230,9 +233,14 @@
                                     <action selector="createAccountButtonPressed:" destination="qzt-Qn-GYF" eventType="touchUpInside" id="kO8-w3-ZT1"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="dvF-cW-ea3">
+                                <rect key="frame" x="169" y="215" width="37" height="37"/>
+                                <color key="color" red="0.25882352939999997" green="0.3294117647" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="dvF-cW-ea3" firstAttribute="centerY" secondItem="JMc-VZ-WUb" secondAttribute="centerY" constant="-100" id="7eN-PT-cP8"/>
                             <constraint firstItem="yhn-2y-Glc" firstAttribute="centerX" secondItem="JMc-VZ-WUb" secondAttribute="centerX" id="Abq-Oa-BCj"/>
                             <constraint firstItem="XuN-Lo-Ple" firstAttribute="top" secondItem="4Cq-UK-jeU" secondAttribute="bottom" id="BE1-62-0kV"/>
                             <constraint firstItem="Ywy-6g-phL" firstAttribute="top" secondItem="ilp-nE-EwU" secondAttribute="top" constant="15" id="Fx1-td-4HA"/>
@@ -243,10 +251,14 @@
                             <constraint firstItem="ySL-rW-2Sk" firstAttribute="centerX" secondItem="JMc-VZ-WUb" secondAttribute="centerX" id="jca-xj-IB1"/>
                             <constraint firstItem="4Cq-UK-jeU" firstAttribute="top" secondItem="yhn-2y-Glc" secondAttribute="bottom" constant="40" id="k5b-Jt-q6A"/>
                             <constraint firstItem="yhn-2y-Glc" firstAttribute="top" secondItem="ySL-rW-2Sk" secondAttribute="bottom" constant="40" id="qvU-i1-Ydw"/>
+                            <constraint firstItem="dvF-cW-ea3" firstAttribute="centerX" secondItem="JMc-VZ-WUb" secondAttribute="centerX" id="zHe-VZ-c3f"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ilp-nE-EwU"/>
                     </view>
                     <connections>
+                        <outlet property="passwordText" destination="Vlf-kg-uw0" id="hok-OD-Cga"/>
+                        <outlet property="spinner" destination="dvF-cW-ea3" id="UyS-uf-rNS"/>
+                        <outlet property="usernameText" destination="7fC-Ut-ztw" id="Qhv-7i-ywG"/>
                         <segue destination="eXl-oN-Fme" kind="show" identifier="toCreateAccount" id="DZO-sA-Yxr"/>
                     </connections>
                 </viewController>
@@ -391,8 +403,8 @@
                                     <action selector="generateBGColorButtonPressed:" destination="eXl-oN-Fme" eventType="touchUpInside" id="Chc-ox-HeQ"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="zDy-3s-aQ3">
-                                <rect key="frame" x="177.5" y="223.5" width="20" height="20"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="zDy-3s-aQ3">
+                                <rect key="frame" x="169.5" y="215.5" width="37" height="37"/>
                                 <color key="color" red="0.25882352939999997" green="0.3294117647" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
                         </subviews>
