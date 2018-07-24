@@ -22,11 +22,13 @@ let smackPurplePlaceholder = #colorLiteral(red: 0.3254901961, green: 0.419607843
 // Notification Constants
 let NOTIF_USER_DATA_DID_CHANGE = Notification.Name("notifUserDataChanged")
 // URL Constants
-let BASE_URL = "https://smack-chat-clone.herokuapp.com/v1/"
+//let BASE_URL = "https://smack-chat-clone.herokuapp.com/v1/"
+let BASE_URL = "http://localhost:3005/v1/"
 let URL_REGISTER = "\(BASE_URL)account/register"
 let URL_LOGIN = "\(BASE_URL)account/login"
 let URL_USER_ADD = "\(BASE_URL)user/add"
 let URL_USER_BY_EMAIL = "\(BASE_URL)user/byEmail/"
+let URL_GET_CHANNELS = "\(BASE_URL)channel"
 
 // User Defaults
 let TOKEN_KEY = "token"
