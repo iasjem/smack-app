@@ -14,6 +14,7 @@ class CreateAccountVC: UIViewController {
     @IBOutlet weak var emailText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var userImage: UIImageView!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     var avatarName = "profileDefault"
     var avatarColor = "[0.5, 0.5, 0.5, 1]"
@@ -21,7 +22,7 @@ class CreateAccountVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -40,6 +41,8 @@ class CreateAccountVC: UIViewController {
     }
     
     @IBAction func createAccountButtonPressed(_ sender: Any) {
+        spinner.isHidden = false
+        spinner.startAnimating()
         guard let name = usernameText.text, usernameText.text != "" else {   return  }
         guard let email = emailText.text, emailText.text != "" else {   return  }
         guard let password = passwordText.text, passwordText.text != "" else {   return  }
@@ -50,7 +53,8 @@ class CreateAccountVC: UIViewController {
                     if success {
                         AuthService.instance.createUser(name: name, email: email, avatarName: self.avatarName, avatarColor: self.avatarColor, completion: { (success) in
                             if success {
-                                print(UserDataService.instance.name, UserDataService.instance.avatarName)
+                                self.spinner.isHidden = true
+                                self.spinner.stopAnimating()
                                 self.performSegue(withIdentifier: UNWIND, sender: nil)
                             }
                         })
@@ -74,6 +78,14 @@ class CreateAccountVC: UIViewController {
         }
     }
     
+    func setupView() {
+        spinner.isHidden = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(CreateAccountVC.handleTap))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func handleTap() {
+        view.endEditing(true)
     }
     
 }
