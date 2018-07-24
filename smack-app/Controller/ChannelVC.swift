@@ -16,6 +16,7 @@ class ChannelVC: UIViewController {
         super.viewDidLoad()
 
         self.revealViewController().rearViewRevealWidth = self.view.frame.width - 60
+        NotificationCenter.default.addObserver(self, selector: #selector(userDataDidChange), name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
     }
     
     @IBAction func loginButtonPressed(_ sender : Any) {
