@@ -38,6 +38,7 @@ let URL_GET_MESSAGES = "\(BASE_URL)message/byChannel/"
 let SOCKET_EVENT_NEW_CHANNEL = "newChannel"
 let SOCKET_EVENT_CHANNEL_CREATED = "channelCreated"
 let SOCKET_EVENT_NEW_MESSAGE = "newMessage"
+let SOCKET_EVENT_MESSAGE_CREATED = "messageCreated"
 
 // User Defaults
 let TOKEN_KEY = "token"
