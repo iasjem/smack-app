@@ -36,4 +36,16 @@ class ChatVC: UIViewController {
         }
     }
     
+    @IBAction func sendMessageButtonPressed(_ sender: Any) {
+        if AuthService.instance.isLoggedIn {
+            guard let channelId = MessageService.instance.selectedChannel?.id else {  return  }
+            guard let message = messageText.text else {  return  }
+            SocketService.instance.addMessage(messageBody: message, userId: UserDataService.instance.id, channelId: channelId) { (success) in
+                if success {
+                    self.messageText.text = ""
+                    self.messageText.resignFirstResponder()
+                }
+            }
+        }
+    }
 }
