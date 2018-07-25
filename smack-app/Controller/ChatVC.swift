@@ -11,14 +11,12 @@ import UIKit
 class ChatVC: UIViewController {
 
     // MARK: Outlets
-    
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var channelNameLabel: UILabel!
     @IBOutlet weak var messageText: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.bindToKeyboard()
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         view.addGestureRecognizer(tap)
@@ -68,6 +66,13 @@ class ChatVC: UIViewController {
                     self.channelNameLabel.text = "No channels yet!"
                 }
             }
+        }
+    }
+    
+    func getMessages() {
+        guard let channelId = MessageService.instance.selectedChannel?.id else { return  }
+        MessageService.instance.findAllMessagesForChannel(channelId: channelId) { (success) in
+            
         }
     }
     
