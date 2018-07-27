@@ -8,11 +8,15 @@
 
 import UIKit
 
-class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ChannelVC: UIViewController {
+    
+    // MARK: IBOutlets
     
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var userImage: CircleImage!
     @IBOutlet weak var tableView: UITableView!
+    
+    // MARK: View LifeCycles
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +38,10 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    // MARK: IBActions
+    
+    @IBAction func prepareForUnwind(segue: UIStoryboardSegue) { }
+    
     @IBAction func addChannelButtonPressed(_ sender: Any) {
         let addChannel = AddChannelVC()
         addChannel.modalPresentationStyle = .custom
@@ -50,9 +58,7 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    @IBAction func prepareForUnwind(segue: UIStoryboardSegue) {
-        
-    }
+    // MARK: Helpers
     
     @objc func userDataDidChange(_ notif: Notification) {
         setupUserInfo()
@@ -74,7 +80,32 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             tableView.reloadData()  
         }
     }
+}
+
+// MARK: UITableViewDelegate
+
+extension ChannelVC: UITableViewDelegate {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let channel = MessageService.instance.channels[indexPath.row]
+        if MessageService.instance.unreadChannels.count > 0 {
+            MessageService.instance.unreadChannels = MessageService.instance.unreadChannels.filter{$0 != channel.id}
+        }
+        let index = IndexPath(row: indexPath.row, section: 0)
+        tableView.reloadRows(at: [index], with: .none)
+        tableView.selectRow(at: index, animated: false, scrollPosition: .none)
+        MessageService.instance.selectedChannel = channel
+        NotificationCenter.default.post(name: NOTIF_CHANNEL_SELECTED, object: nil)
+        self.revealViewController().revealToggle(animated: true)
+    }
+}
+
+// MARK: UITableViewDataSource
+
+extension ChannelVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "channelCell", for: indexPath) as? ChannelCell {
             let channel = MessageService.instance.channels[indexPath.row]
@@ -85,28 +116,7 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return MessageService.instance.channels.count
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let channel = MessageService.instance.channels[indexPath.row]
-        
-        if MessageService.instance.unreadChannels.count > 0 {
-            MessageService.instance.unreadChannels = MessageService.instance.unreadChannels.filter{$0 != channel.id}
-        }
-        
-        let index = IndexPath(row: indexPath.row, section: 0)
-        tableView.reloadRows(at: [index], with: .none)
-        tableView.selectRow(at: index, animated: false, scrollPosition: .none)
-        
-        MessageService.instance.selectedChannel = channel
-        NotificationCenter.default.post(name: NOTIF_CHANNEL_SELECTED, object: nil)
-        self.revealViewController().revealToggle(animated: true)
-    }
-
 }
