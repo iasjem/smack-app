@@ -107,13 +107,12 @@ extension ChannelVC: UITableViewDelegate {
 
 extension ChannelVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "channelCell", for: indexPath) as? ChannelCell {
-            let channel = MessageService.instance.channels[indexPath.row]
-            cell.configureCell(channel: channel)
-            return cell
-        } else {
-            return UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "channelCell", for: indexPath) as? ChannelCell else {
+             return UITableViewCell()
         }
+        let channel = MessageService.instance.channels[indexPath.row]
+        cell.configureCell(channel: channel)
+        return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
