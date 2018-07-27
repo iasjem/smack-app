@@ -12,9 +12,9 @@ class CreateAccountVC: UIViewController {
 
     // MARK: IBOutlets
     
-    @IBOutlet weak var usernameText: UITextField!
-    @IBOutlet weak var emailText: UITextField!
-    @IBOutlet weak var passwordText: UITextField!
+    @IBOutlet weak var usernameField: UITextField!
+    @IBOutlet weak var emailField: UITextField!
+    @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
