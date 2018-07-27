@@ -10,17 +10,22 @@ import UIKit
 
 class ChannelCell: UITableViewCell {
 
+    // MARK: IBOutlets
+    
     @IBOutlet weak var channelName: UILabel!
 
+    // MARK: Overrides
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         if selected {
             self.layer.backgroundColor = #colorLiteral(red: 0.3156195879, green: 0.3156195879, blue: 0.3156195879, alpha: 0.25)
         } else {
             self.layer.backgroundColor = UIColor.clear.cgColor
         }
     }
+    
+    // MARK: Helpers
 
     func configureCell(channel: Channel) {
         let title = channel.channelTitle ?? ""
@@ -32,5 +37,4 @@ class ChannelCell: UITableViewCell {
             }
         }
     }
-    
 }
