@@ -10,15 +10,21 @@ import UIKit
 
 class ProfileVC: UIViewController {
     
+    // MARK: IBOutlets
+    
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userEmailLabel: UILabel!
     @IBOutlet weak var bgView: UIView!
     
+    // MARK: View LifeCycles
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
     }
+    
+    // MARK: IBActions
     
     @IBAction func closeButtonPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -29,6 +35,8 @@ class ProfileVC: UIViewController {
         NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
         dismiss(animated: true, completion: nil)
     }
+    
+    // MARK: Helpers
     
     func setupView() {
         userNameLabel.text = UserDataService.instance.name
@@ -42,5 +50,4 @@ class ProfileVC: UIViewController {
     @objc func closeTap(_ recognizer: UITapGestureRecognizer) {
         dismiss(animated: true, completion: nil)
     }
-    
 }
