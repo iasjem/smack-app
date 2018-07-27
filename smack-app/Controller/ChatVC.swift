@@ -14,10 +14,10 @@ class ChatVC: UIViewController {
     
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var channelNameLabel: UILabel!
-    @IBOutlet weak var messageText: UITextField!
+    @IBOutlet weak var messageField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var messageSendButton: UIButton!
-    @IBOutlet weak var typingUsersIndicator: UILabel!
+    @IBOutlet weak var typingUsersIndicatorLabel: UILabel!
     
     // MARK: Initializers
     
@@ -69,9 +69,9 @@ class ChatVC: UIViewController {
                 if numberOfTypers > 1 {
                     verb = "are"
                 }
-                self.typingUsersIndicator.text = "\(names) \(verb) typing a message"
+                self.typingUsersIndicatorLabel.text = "\(names) \(verb) typing a message"
             } else {
-                self.typingUsersIndicator.text = ""
+                self.typingUsersIndicatorLabel.text = ""
             }
         }
         if AuthService.instance.isLoggedIn {
@@ -133,11 +133,11 @@ class ChatVC: UIViewController {
     @IBAction func sendMessageButtonPressed(_ sender: Any) {
         if AuthService.instance.isLoggedIn {
             guard let channelId = MessageService.instance.selectedChannel?.id else {  return  }
-            guard let message = messageText.text else {  return  }
+            guard let message = messageField.text else {  return  }
             SocketService.instance.addMessage(messageBody: message, userId: UserDataService.instance.id, channelId: channelId) { (success) in
                 if success {
-                    self.messageText.text = ""
-                    self.messageText.resignFirstResponder()
+                    self.messageField.text = ""
+                    self.messageField.resignFirstResponder()
                     SocketService.instance.manager.defaultSocket.emit("stopType", UserDataService.instance.name, channelId)
                 }
             }
@@ -146,7 +146,7 @@ class ChatVC: UIViewController {
     
     @IBAction func messageTextEditting(_ sender: Any) {
         guard let channelId = MessageService.instance.selectedChannel?.id else {   return   }
-        if messageText.text == "" {
+        if messageField.text == "" {
             isTyping = false
             messageSendButton.isHidden = true
             SocketService.instance.manager.defaultSocket.emit("stopType", UserDataService.instance.name, channelId)
