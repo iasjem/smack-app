@@ -13,8 +13,8 @@ class LoginVC: UIViewController {
     // MARK: IBOutlets
     
     @IBOutlet weak var spinner: UIActivityIndicatorView!
-    @IBOutlet weak var usernameText: UITextField!
-    @IBOutlet weak var passwordText: UITextField!
+    @IBOutlet weak var usernameField: UITextField!
+    @IBOutlet weak var passwordField: UITextField!
     
     // MARK: View LifeCycles
     
@@ -36,8 +36,8 @@ class LoginVC: UIViewController {
     @IBAction func loginButtonPressed(_ sender: Any) {
         spinner.isHidden = false
         spinner.startAnimating()
-        guard let email = usernameText.text, usernameText.text != "" else {   return  }
-        guard let password = passwordText.text, passwordText.text != "" else {   return  }
+        guard let email = usernameField.text, usernameField.text != "" else {   return  }
+        guard let password = passwordField.text, passwordField.text != "" else {   return  }
         AuthService.instance.loginUser(email: email, password: password) { (success) in
             if success {
                 AuthService.instance.findUserByEmail(completion: { (success) in
@@ -56,8 +56,8 @@ class LoginVC: UIViewController {
  
     func setupView() {
         spinner.isHidden = true
-        usernameText.attributedPlaceholder = NSAttributedString(string: "username", attributes: [NSAttributedStringKey.foregroundColor: smackPurplePlaceholder])
-        passwordText.attributedPlaceholder = NSAttributedString(string: "password", attributes: [NSAttributedStringKey.foregroundColor: smackPurplePlaceholder])
+        usernameField.attributedPlaceholder = NSAttributedString(string: "username", attributes: [NSAttributedStringKey.foregroundColor: PLACEHOLDER_COLOR])
+        passwordField.attributedPlaceholder = NSAttributedString(string: "password", attributes: [NSAttributedStringKey.foregroundColor: PLACEHOLDER_COLOR])
         let tap = UITapGestureRecognizer(target: self, action: #selector(CreateAccountVC.handleTap))
         view.addGestureRecognizer(tap)
     }
