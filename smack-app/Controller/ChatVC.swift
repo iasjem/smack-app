@@ -30,16 +30,35 @@ class ChatVC: UIViewController {
         view.bindToKeyboard()
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.estimatedRowHeight = 80
-        tableView.rowHeight = UITableViewAutomaticDimension
         messageSendButton.isHidden = true
+        setupTableView()
+        setupGestures()
+        setupNotificationCenters()
+        setupFromSocketService()
+        checkLoginStatus()
+    }
+    
+    // MARK: Setups
+    
+    func setupGestures() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         view.addGestureRecognizer(tap)
         menuButton.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
+    }
+    
+    func setupTableView() {
+        tableView.estimatedRowHeight = 80
+        tableView.rowHeight = UITableViewAutomaticDimension
+    }
+    
+    func setupNotificationCenters() {
         NotificationCenter.default.addObserver(self, selector: #selector(ChatVC.userDataDidChange), name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ChatVC.channelSelected), name: NOTIF_CHANNEL_SELECTED, object: nil)
+    }
+    
+    func setupFromSocketService() {
         SocketService.instance.getChatMessage { (newMessage) in
             if newMessage.channelId == MessageService.instance.selectedChannel?.id && AuthService.instance.isLoggedIn {
                 MessageService.instance.messages.append(newMessage)
@@ -74,6 +93,11 @@ class ChatVC: UIViewController {
                 self.typingUsersIndicatorLabel.text = ""
             }
         }
+    }
+    
+    // MARK: Helpers
+    
+    func checkLoginStatus() {
         if AuthService.instance.isLoggedIn {
             AuthService.instance.findUserByEmail { (success) in
                 NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
@@ -81,13 +105,13 @@ class ChatVC: UIViewController {
         }
     }
     
-    // MARK: Helpers
-    
     @objc func userDataDidChange(_ notif: Notification) {
         if AuthService.instance.isLoggedIn {
+            messageField.isEnabled = true
             onLoginGetMessages()
         } else {
-            channelNameLabel.text = "Smack"
+            messageField.isEnabled = false
+            channelNameLabel.text = "Login to start chatting"
             tableView.reloadData()
         }
     }
