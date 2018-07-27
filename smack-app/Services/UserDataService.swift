@@ -10,6 +10,8 @@ import Foundation
 
 class UserDataService {
     
+    // MARK: Initializers
+    
     static let instance = UserDataService()
     
     public private(set) var id = ""
@@ -17,6 +19,8 @@ class UserDataService {
     public private(set) var avatarName = ""
     public private(set) var email = ""
     public private(set) var name = ""
+    
+    // MARK: Setters
     
     func setUserData(id: String, color: String, avatarName: String, email: String, name: String) {
         self.id = id
@@ -30,28 +34,24 @@ class UserDataService {
         self.avatarName = avatarName
     }
     
+    // MARK: Helpers
+    
     func returnUIColor(components: String) -> UIColor {
         let scanner = Scanner(string: components)
         let skipped = CharacterSet(charactersIn: "[], ")
         let comma = CharacterSet(charactersIn: ",")
         scanner.charactersToBeSkipped = skipped
-        
         var r, g, b, a: NSString?
-
         scanner.scanUpToCharacters(from: comma, into: &r)
         scanner.scanUpToCharacters(from: comma, into: &g)
         scanner.scanUpToCharacters(from: comma, into: &b)
         scanner.scanUpToCharacters(from: comma, into: &a)
-        
         let defaultColor = UIColor.lightGray
-        
         guard let red = r else { return defaultColor }
         guard let green = g else { return defaultColor }
         guard let blue = b else { return defaultColor }
         guard let alpha = a else { return defaultColor }
-        
         let newUIColor = UIColor(red: CGFloat(red.doubleValue) / 255.0, green: CGFloat(green.doubleValue) / 255.0, blue: CGFloat(blue.doubleValue) / 255.0, alpha: CGFloat(alpha.doubleValue))
-        
         return newUIColor
     }
     
@@ -67,5 +67,4 @@ class UserDataService {
         MessageService.instance.clearChannels()
         MessageService.instance.clearMessages()
     }
-    
 }
