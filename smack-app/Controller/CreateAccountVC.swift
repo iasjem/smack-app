@@ -29,6 +29,7 @@ class CreateAccountVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        setupGestures()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -67,7 +68,7 @@ class CreateAccountVC: UIViewController {
                             } else {
                                 self.spinner.isHidden = true
                                 self.spinner.stopAnimating()
-                                self.showAlert(withMessage: "Invalid email or password provided.")
+                                self.showAlert(withTitle: "Error!", withMessage: "Invalid email or password provided.")
                             }
                         })
                     }
@@ -91,16 +92,21 @@ class CreateAccountVC: UIViewController {
         }
     }
     
-    // MARK: Helpers
+    // MARK: Setups
     
     func setupView() {
         spinner.isHidden = true
         usernameField.attributedPlaceholder = NSAttributedString(string: "username", attributes: [NSAttributedStringKey.foregroundColor: PLACEHOLDER_COLOR])
         emailField.attributedPlaceholder = NSAttributedString(string: "email", attributes: [NSAttributedStringKey.foregroundColor: PLACEHOLDER_COLOR])
         passwordField.attributedPlaceholder = NSAttributedString(string: "password", attributes: [NSAttributedStringKey.foregroundColor: PLACEHOLDER_COLOR])
+    }
+    
+    func setupGestures() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(CreateAccountVC.handleTap))
         view.addGestureRecognizer(tap)
     }
+    
+    // MARK: Helpers
     
     @objc func handleTap() {
         view.endEditing(true)
