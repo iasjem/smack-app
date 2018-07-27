@@ -11,12 +11,16 @@ import UIKit
 @IBDesignable
 class RoundedButton: UIButton {
 
+    // MARK: @IBInspectables
+    
     @IBInspectable var cornerRadius: CGFloat = 3.0 {
         didSet {
             self.layer.cornerRadius = cornerRadius
         }
     }
 
+    // MARK: Overrides
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.setupView()
@@ -27,8 +31,9 @@ class RoundedButton: UIButton {
         self.setupView()
     }
     
+    // MARK: Helpers
+    
     func setupView() {
         self.layer.cornerRadius = cornerRadius
     }
-    
 }
