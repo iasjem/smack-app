@@ -15,6 +15,8 @@ class ChannelVC: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var userImage: CircleImage!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var addChannelButton: UIButton!
+    @IBOutlet weak var channelsTitleLabel: UILabel!
     
     // MARK: View LifeCycles
     
