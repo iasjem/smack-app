@@ -262,9 +262,9 @@
                         <viewLayoutGuide key="safeArea" id="ilp-nE-EwU"/>
                     </view>
                     <connections>
-                        <outlet property="passwordText" destination="Vlf-kg-uw0" id="hok-OD-Cga"/>
+                        <outlet property="passwordField" destination="Vlf-kg-uw0" id="nzv-pU-Zrb"/>
                         <outlet property="spinner" destination="dvF-cW-ea3" id="UyS-uf-rNS"/>
-                        <outlet property="usernameText" destination="7fC-Ut-ztw" id="Qhv-7i-ywG"/>
+                        <outlet property="usernameField" destination="7fC-Ut-ztw" id="B4T-2T-2lc"/>
                         <segue destination="eXl-oN-Fme" kind="show" identifier="toCreateAccount" id="DZO-sA-Yxr"/>
                     </connections>
                 </viewController>
