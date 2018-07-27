@@ -10,14 +10,20 @@ import UIKit
 
 class LoginVC: UIViewController {
     
+    // MARK: IBOutlets
+    
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var usernameText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
+    
+    // MARK: View LifeCycles
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
     }
+    
+    // MARK: IBActions
     
     @IBAction func closeButtonPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -30,10 +36,8 @@ class LoginVC: UIViewController {
     @IBAction func loginButtonPressed(_ sender: Any) {
         spinner.isHidden = false
         spinner.startAnimating()
-        
         guard let email = usernameText.text, usernameText.text != "" else {   return  }
         guard let password = passwordText.text, passwordText.text != "" else {   return  }
-        
         AuthService.instance.loginUser(email: email, password: password) { (success) in
             if success {
                 AuthService.instance.findUserByEmail(completion: { (success) in
@@ -47,6 +51,8 @@ class LoginVC: UIViewController {
             }
         }
     }
+    
+    // MARK: Helpers
  
     func setupView() {
         spinner.isHidden = true
@@ -59,5 +65,4 @@ class LoginVC: UIViewController {
     @objc func handleTap() {
         view.endEditing(true)
     }
-    
 }
