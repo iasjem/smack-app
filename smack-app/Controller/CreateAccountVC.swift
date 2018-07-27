@@ -51,9 +51,9 @@ class CreateAccountVC: UIViewController {
     @IBAction func createAccountButtonPressed(_ sender: Any) {
         spinner.isHidden = false
         spinner.startAnimating()
-        guard let name = usernameText.text, usernameText.text != "" else {   return  }
-        guard let email = emailText.text, emailText.text != "" else {   return  }
-        guard let password = passwordText.text, passwordText.text != "" else {   return  }
+        guard let name = usernameField.text, usernameField.text != "" else {   return  }
+        guard let email = emailField.text, emailField.text != "" else {   return  }
+        guard let password = passwordField.text, passwordField.text != "" else {   return  }
         AuthService.instance.registerUser(email: email, password: password) { (success) in
             if success {
                 AuthService.instance.loginUser(email: email, password: password, completion: { (success) in
