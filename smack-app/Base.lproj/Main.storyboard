@@ -126,6 +126,8 @@
                         <viewLayoutGuide key="safeArea" id="Ogx-j7-pSv"/>
                     </view>
                     <connections>
+                        <outlet property="addChannelButton" destination="1yL-gj-DwQ" id="DWd-Ae-c1a"/>
+                        <outlet property="channelsTitleLabel" destination="jdM-5d-DE1" id="8cp-VC-Fu6"/>
                         <outlet property="loginButton" destination="hTf-Gr-cPy" id="vnS-D9-Ww1"/>
                         <outlet property="tableView" destination="J9a-yV-CjA" id="YUF-Rf-dOx"/>
                         <outlet property="userImage" destination="z1g-QX-asl" id="Yab-fs-oSp"/>
