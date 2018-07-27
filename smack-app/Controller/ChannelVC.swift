@@ -24,22 +24,9 @@ class ChannelVC: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        addChannelButton.isHidden = true
-        channelsTitleLabel.isHidden = true
-        self.revealViewController().rearViewRevealWidth = self.view.frame.width - 60
-        NotificationCenter.default.addObserver(self, selector: #selector(userDataDidChange), name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(channelsLoaded), name: NOTIF_CHANNELS_LOADED, object: nil)
-        SocketService.instance.getChannel { (success) in
-            if success {
-                self.tableView.reloadData()
-            }
-        }
-        SocketService.instance.getChatMessage { (newMessage) in
-            if newMessage.channelId != MessageService.instance.selectedChannel?.id && AuthService.instance.isLoggedIn {
-                MessageService.instance.unreadChannels.append(newMessage.channelId)
-                self.tableView.reloadData()
-            }
-        }
+        setupView()
+        setupNotificationCenters()
+        setupFromSocketService()
     }
     
     // MARK: IBActions
@@ -51,8 +38,6 @@ class ChannelVC: UIViewController {
             let addChannel = AddChannelVC()
             addChannel.modalPresentationStyle = .custom
             present(addChannel, animated: true, completion: nil)
-        } else {
-            showAlert(withMessage: "You must be logged in first!")
         }
     }
     
@@ -66,14 +51,31 @@ class ChannelVC: UIViewController {
         }
     }
     
-    // MARK: Helpers
+    // MARK: Setups
     
-    @objc func userDataDidChange(_ notif: Notification) {
-        setupUserInfo()
+    func setupView() {
+        addChannelButton.isHidden = true
+        channelsTitleLabel.isHidden = true
+        self.revealViewController().rearViewRevealWidth = self.view.frame.width - 60
     }
 
-    @objc func channelsLoaded(_ notif: Notification) {
-        tableView.reloadData()
+    func setupNotificationCenters() {
+        NotificationCenter.default.addObserver(self, selector: #selector(userDataDidChange), name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(channelsLoaded), name: NOTIF_CHANNELS_LOADED, object: nil)
+    }
+    
+    func setupFromSocketService() {
+        SocketService.instance.getChannel { (success) in
+            if success {
+                self.tableView.reloadData()
+            }
+        }
+        SocketService.instance.getChatMessage { (newMessage) in
+            if newMessage.channelId != MessageService.instance.selectedChannel?.id && AuthService.instance.isLoggedIn {
+                MessageService.instance.unreadChannels.append(newMessage.channelId)
+                self.tableView.reloadData()
+            }
+        }
     }
     
     func setupUserInfo() {
@@ -89,8 +91,18 @@ class ChannelVC: UIViewController {
             loginButton.setTitle("Login", for: .normal)
             userImage.image = UIImage(named: "menuProfileIcon")
             userImage.backgroundColor = UIColor.clear
-            tableView.reloadData()  
+            tableView.reloadData()
         }
+    }
+    
+    // MARK: Helpers
+    
+    @objc func userDataDidChange(_ notif: Notification) {
+        setupUserInfo()
+    }
+
+    @objc func channelsLoaded(_ notif: Notification) {
+        tableView.reloadData()
     }
 }
 
