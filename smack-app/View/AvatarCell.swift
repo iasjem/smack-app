@@ -14,12 +14,19 @@ enum AvatarType {
 }
 
 class AvatarCell: UICollectionViewCell {
+
+    // MARK: IBOutlets
+    
     @IBOutlet weak var avatarImage: UIImageView!
+    
+    // MARK: Overrides
     
     override func awakeFromNib() {
         super.awakeFromNib()
         setupView()
     }
+    
+    // MARK: Helpers
     
     func configureCell(index: Int, type: AvatarType) {
         if type == AvatarType.dark {
