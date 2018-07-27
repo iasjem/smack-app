@@ -10,15 +10,21 @@ import UIKit
 
 class CreateAccountVC: UIViewController {
 
+    // MARK: IBOutlets
+    
     @IBOutlet weak var usernameText: UITextField!
     @IBOutlet weak var emailText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
+    // MARK: Initializers
+    
     var avatarName = "profileDefault"
     var avatarColor = "[0.5, 0.5, 0.5, 1]"
     var bgColor: UIColor?
+    
+    // MARK: View LifeCycles
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +42,8 @@ class CreateAccountVC: UIViewController {
         }
     }
     
+    // MARK: IBActions
+    
     @IBAction func closeButtonPressed(_ sender: Any) {
         performSegue(withIdentifier: UNWIND, sender: nil)
     }
@@ -46,7 +54,6 @@ class CreateAccountVC: UIViewController {
         guard let name = usernameText.text, usernameText.text != "" else {   return  }
         guard let email = emailText.text, emailText.text != "" else {   return  }
         guard let password = passwordText.text, passwordText.text != "" else {   return  }
-        
         AuthService.instance.registerUser(email: email, password: password) { (success) in
             if success {
                 AuthService.instance.loginUser(email: email, password: password, completion: { (success) in
@@ -80,6 +87,8 @@ class CreateAccountVC: UIViewController {
         }
     }
     
+    // MARK: Helpers
+    
     func setupView() {
         spinner.isHidden = true
         usernameText.attributedPlaceholder = NSAttributedString(string: "username", attributes: [NSAttributedStringKey.foregroundColor: smackPurplePlaceholder])
@@ -92,5 +101,4 @@ class CreateAccountVC: UIViewController {
     @objc func handleTap() {
         view.endEditing(true)
     }
-    
 }
