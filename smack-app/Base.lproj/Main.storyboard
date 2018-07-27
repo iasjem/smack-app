@@ -100,7 +100,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
-                                            <outlet property="channelName" destination="AbG-rF-99V" id="aht-m9-uKh"/>
+                                            <outlet property="channelNameLabel" destination="AbG-rF-99V" id="aht-m9-uKh"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -437,11 +437,11 @@
                         <viewLayoutGuide key="safeArea" id="aHJ-AM-Yol"/>
                     </view>
                     <connections>
-                        <outlet property="emailText" destination="nfv-no-kwb" id="aLN-o5-ihf"/>
-                        <outlet property="passwordText" destination="tkk-Si-vbr" id="oZ9-Ja-WR9"/>
+                        <outlet property="emailField" destination="nfv-no-kwb" id="aLN-o5-ihf"/>
+                        <outlet property="passwordField" destination="tkk-Si-vbr" id="oZ9-Ja-WR9"/>
                         <outlet property="spinner" destination="zDy-3s-aQ3" id="cMY-Am-9Bs"/>
                         <outlet property="userImage" destination="dB9-0J-JbZ" id="mTo-Xw-rBs"/>
-                        <outlet property="usernameText" destination="FH6-BI-y8h" id="zD1-Fa-UuP"/>
+                        <outlet property="usernameField" destination="FH6-BI-y8h" id="zD1-Fa-UuP"/>
                         <segue destination="nKn-J3-VaR" kind="unwind" identifier="unwindToChannel" unwindAction="prepareForUnwindWithSegue:" id="ioD-jU-y8z"/>
                         <segue destination="nMx-IO-jHD" kind="show" identifier="toAvatarPicker" id="75m-xo-mkC"/>
                     </connections>
@@ -690,10 +690,10 @@
                     <connections>
                         <outlet property="channelNameLabel" destination="3gk-vo-kur" id="WHE-Zn-V1u"/>
                         <outlet property="menuButton" destination="cd8-he-2nr" id="bMa-X7-JXr"/>
+                        <outlet property="messageField" destination="VkV-c2-lRf" id="bti-di-HYw"/>
                         <outlet property="messageSendButton" destination="Tvq-2m-Tmu" id="Pfo-1j-Q4b"/>
-                        <outlet property="messageText" destination="VkV-c2-lRf" id="bti-di-HYw"/>
                         <outlet property="tableView" destination="GeS-zR-Iac" id="t7l-3M-zNI"/>
-                        <outlet property="typingUsersIndicator" destination="R3V-Ma-ShU" id="4OX-4i-M6o"/>
+                        <outlet property="typingUsersIndicatorLabel" destination="R3V-Ma-ShU" id="4OX-4i-M6o"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QLb-Nz-kgA" userLabel="First Responder" sceneMemberID="firstResponder"/>
