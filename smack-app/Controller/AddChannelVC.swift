@@ -10,15 +10,20 @@ import UIKit
 
 class AddChannelVC: UIViewController {
     
+    // MARK: IBOutlets
+    
     @IBOutlet weak var channelNameText: UITextField!
     @IBOutlet weak var channelDescriptionText: UITextField!
     @IBOutlet weak var bgView: UIView!
     
-
+    // MARK: View LifeCycles
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
     }
+    
+    // MARK: IBActions
     
     @IBAction func createChannelButtonPressed(_ sender: Any) {
         guard let channelName = channelNameText.text, channelNameText.text != "" else {  return  }
@@ -34,6 +39,8 @@ class AddChannelVC: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    // MARK: Helpers
+    
     func setupView() {
         channelNameText.attributedPlaceholder = NSAttributedString(string: "name", attributes: [NSAttributedStringKey.foregroundColor: smackPurplePlaceholder])
         channelDescriptionText.attributedPlaceholder = NSAttributedString(string: "description", attributes: [NSAttributedStringKey.foregroundColor: smackPurplePlaceholder])
@@ -44,5 +51,4 @@ class AddChannelVC: UIViewController {
     @objc func handleTap() {
         dismiss(animated: true, completion: nil)
     }
-
 }
