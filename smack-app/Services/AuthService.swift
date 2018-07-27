@@ -60,9 +60,8 @@ class AuthService {
     // MARK: Helpers
     
     func registerUser(email: String, password: String, completion: @escaping CompletionHandler) {
-        let lowerCasedEmail = email.lowercased()
         let body: [String: Any] = [
-            "email": lowerCasedEmail,
+            "email": email.lowercased(),
             "password": password
         ]
         Alamofire.request(URL_REGISTER, method: .post, parameters: body, encoding: JSONEncoding.default, headers: HEADER).responseJSON { (response) in
@@ -76,9 +75,8 @@ class AuthService {
     }
     
     func loginUser(email: String, password: String, completion: @escaping CompletionHandler) {
-        let lowerCasedEmail = email.lowercased()
         let body: [String: Any] = [
-            "email": lowerCasedEmail,
+            "email": email.lowercased(),
             "password": password
         ]
         Alamofire.request(URL_LOGIN, method: .post, parameters: body, encoding: JSONEncoding.default, headers: HEADER).responseJSON { (response) in
@@ -97,10 +95,9 @@ class AuthService {
     }
     
     func createUser(name: String, email: String, avatarName: String, avatarColor: String, completion: @escaping CompletionHandler) {
-        let lowerCasedEmail = email.lowercased()
         let body: [String: Any] = [
             "name": name,
-            "email": lowerCasedEmail,
+            "email": email.lowercased(),
             "avatarName": avatarName,
             "avatarColor": avatarColor
         ]
