@@ -27,11 +27,9 @@ class ChatVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.bindToKeyboard()
         tableView.delegate = self
         tableView.dataSource = self
-        messageSendButton.isHidden = true
-        messageField.isHidden = true
+        setupView()
         setupTableView()
         setupGestures()
         setupNotificationCenters()
@@ -40,6 +38,12 @@ class ChatVC: UIViewController {
     }
     
     // MARK: Setups
+    
+    func setupView() {
+        view.bindToKeyboard()
+        messageSendButton.isHidden = true
+        messageField.isHidden = true
+    }
     
     func setupGestures() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
