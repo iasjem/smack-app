@@ -31,6 +31,7 @@ class ChatVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         messageSendButton.isHidden = true
+        messageField.isHidden = true
         setupTableView()
         setupGestures()
         setupNotificationCenters()
@@ -107,11 +108,11 @@ class ChatVC: UIViewController {
     
     @objc func userDataDidChange(_ notif: Notification) {
         if AuthService.instance.isLoggedIn {
-            messageField.isEnabled = true
+            messageField.isHidden = false
             onLoginGetMessages()
         } else {
-            messageField.isEnabled = false
-            channelNameLabel.text = "Login to start chatting"
+            messageField.isHidden = true
+            channelNameLabel.text = "Login to start chat"
             tableView.reloadData()
         }
     }
@@ -157,7 +158,7 @@ class ChatVC: UIViewController {
     @IBAction func sendMessageButtonPressed(_ sender: Any) {
         if AuthService.instance.isLoggedIn {
             guard let channelId = MessageService.instance.selectedChannel?.id else {  return  }
-            guard let message = messageField.text else {  return  }
+            guard let message = messageField.text, messageField.text != "" else {  return  }
             SocketService.instance.addMessage(messageBody: message, userId: UserDataService.instance.id, channelId: channelId) { (success) in
                 if success {
                     self.messageField.text = ""
