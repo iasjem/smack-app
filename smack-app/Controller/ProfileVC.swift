@@ -43,11 +43,11 @@ class ProfileVC: UIViewController {
         userEmailLabel.text = UserDataService.instance.email
         profileImage.image = UIImage(named: UserDataService.instance.avatarName)
         profileImage.backgroundColor = UserDataService.instance.returnUIColor(components: UserDataService.instance.avatarColor)
-        let tap = UITapGestureRecognizer(target: self, action: #selector(closeTap))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         bgView.addGestureRecognizer(tap)
     }
     
-    @objc func closeTap(_ recognizer: UITapGestureRecognizer) {
+    @objc func handleTap(_ recognizer: UITapGestureRecognizer) {
         dismiss(animated: true, completion: nil)
     }
 }
