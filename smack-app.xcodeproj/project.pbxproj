@@ -32,6 +32,7 @@
 		76BA88DF21085BDC00F817BB /* KeyboardBoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BA88DE21085BDB00F817BB /* KeyboardBoundView.swift */; };
 		76BA88E1210861CF00F817BB /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BA88E0210861CF00F817BB /* MessageCell.swift */; };
 		76C5A686210AF85E00F8D325 /* AvatarType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C5A685210AF85E00F8D325 /* AvatarType.swift */; };
+		76C5A688210B270200F8D325 /* UIVC+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C5A687210B270200F8D325 /* UIVC+Extension.swift */; };
 		76D36F022106F8E000E15F67 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D36F012106F8E000E15F67 /* ProfileVC.swift */; };
 		76D36F042106F90300E15F67 /* ProfileVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76D36F032106F90300E15F67 /* ProfileVC.xib */; };
 		76D36F0721070CB100E15F67 /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D36F0621070CB100E15F67 /* MessageService.swift */; };
@@ -97,6 +98,7 @@
 		76BA88DE21085BDB00F817BB /* KeyboardBoundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardBoundView.swift; sourceTree = "<group>"; };
 		76BA88E0210861CF00F817BB /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		76C5A685210AF85E00F8D325 /* AvatarType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarType.swift; sourceTree = "<group>"; };
+		76C5A687210B270200F8D325 /* UIVC+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVC+Extension.swift"; sourceTree = "<group>"; };
 		76D36F012106F8E000E15F67 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		76D36F032106F90300E15F67 /* ProfileVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileVC.xib; sourceTree = "<group>"; };
 		76D36F0621070CB100E15F67 /* MessageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 			children = (
 				760366BB210574C600017819 /* Constants.swift */,
 				76C5A685210AF85E00F8D325 /* AvatarType.swift */,
+				76C5A687210B270200F8D325 /* UIVC+Extension.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -529,6 +532,7 @@
 				760366CD2106C91D00017819 /* CircleImage.swift in Sources */,
 				76D36F0721070CB100E15F67 /* MessageService.swift in Sources */,
 				76C5A686210AF85E00F8D325 /* AvatarType.swift in Sources */,
+				76C5A688210B270200F8D325 /* UIVC+Extension.swift in Sources */,
 				767D1F3A2101FABF0038D421 /* ChatVC.swift in Sources */,
 				760366C72105D27400017819 /* UserDataService.swift in Sources */,
 				760366C021057F2C00017819 /* CreateAccountVC.swift in Sources */,
