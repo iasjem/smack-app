@@ -11,13 +11,10 @@ import UIKit
 @IBDesignable
 class CircleImage: UIImageView {
 
+    // MARK: Overrides
+    
     override func awakeFromNib() {
         setupView()
-    }
-    
-    func setupView() {
-        self.layer.cornerRadius = self.frame.width / 2
-        self.clipsToBounds = true
     }
     
     override func prepareForInterfaceBuilder() {
@@ -25,4 +22,10 @@ class CircleImage: UIImageView {
         setupView()
     }
     
+    // MARK: Helpers
+    
+    func setupView() {
+        self.layer.cornerRadius = self.frame.width / 2
+        self.clipsToBounds = true
+    }
 }
