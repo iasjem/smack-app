@@ -12,7 +12,7 @@ class ChannelCell: UITableViewCell {
 
     // MARK: IBOutlets
     
-    @IBOutlet weak var channelName: UILabel!
+    @IBOutlet weak var channelNameLabel: UILabel!
 
     // MARK: Overrides
     
