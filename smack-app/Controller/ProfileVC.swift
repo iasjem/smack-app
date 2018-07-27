@@ -22,6 +22,7 @@ class ProfileVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        setupGestures()
     }
     
     // MARK: IBActions
@@ -36,16 +37,21 @@ class ProfileVC: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    // MARK: Helpers
+    // MARK: Setups
     
     func setupView() {
         userNameLabel.text = UserDataService.instance.name
         userEmailLabel.text = UserDataService.instance.email
         profileImage.image = UIImage(named: UserDataService.instance.avatarName)
         profileImage.backgroundColor = UserDataService.instance.returnUIColor(components: UserDataService.instance.avatarColor)
+    }
+    
+    func setupGestures() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         bgView.addGestureRecognizer(tap)
     }
+    
+    // MARK: Helpers
     
     @objc func handleTap(_ recognizer: UITapGestureRecognizer) {
         dismiss(animated: true, completion: nil)
