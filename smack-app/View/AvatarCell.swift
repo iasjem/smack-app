@@ -8,16 +8,11 @@
 
 import UIKit
 
-enum AvatarType {
-    case dark
-    case light
-}
-
 class AvatarCell: UICollectionViewCell {
 
     // MARK: IBOutlets
     
-    @IBOutlet weak var avatarImage: UIImageView!
+    @IBOutlet weak var avatarImage: CircleImage!
     
     // MARK: Overrides
     
